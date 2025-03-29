@@ -15,6 +15,8 @@ HTTP is an application layer protocol for transferring information between devic
 
 ## With streaming over HTTP, the standard request-response pattern does not apply. The connection between client and server remains open for the duration of the stream, and the server pushes video data to the client so that the client does not have to request every segment of video data.
 
+---
+
 `CORS`
 CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 CORS (Cross-Origin Resource Sharing) is a security feature in web browsers that controls how websites can request data from other websites.
@@ -34,3 +36,101 @@ Server Response: If the other website allows it, it sends back special CORS head
 Access Granted or Denied:
 If the headers allow it → The browser shows the data.
 If the headers don’t allow it → The browser blocks the request.
+
+---
+
+`Express`
+Express is a lightweight and flexible routing framework with minimal core features meant to be augmented through the use of Express middleware modules.
+
+### **Uses of Express.js**
+
+1️⃣ **Building RESTful APIs**
+
+- Easily create API endpoints for web and mobile apps.
+- Example:
+  ```javascript
+  app.get("/users", (req, res) => res.json([{ id: 1, name: "Alice" }]));
+  ```
+
+2️⃣ **Creating Web Applications**
+
+- Supports templating engines like **EJS, Pug, Handlebars**.
+- Example (EJS):
+  ```javascript
+  app.set("view engine", "ejs");
+  app.get("/", (req, res) => res.render("index", { title: "Welcome" }));
+  ```
+
+3️⃣ **Serving Static Files**
+
+- Serve **HTML, CSS, JS, images, videos**.
+- Example:
+  ```javascript
+  app.use(express.static("public"));
+  ```
+
+4️⃣ **Middleware for Authentication & Security**
+
+- Use middleware for **logging, security, and authentication**.
+- Example (Logging Requests):
+  ```javascript
+  app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+  });
+  ```
+
+5️⃣ **Handling WebSockets & Real-Time Applications**
+
+- Works with **Socket.io** for real-time communication.
+- Example:
+  ```javascript
+  const io = require("socket.io")(server);
+  io.on("connection", (socket) => console.log("User connected"));
+  ```
+
+6️⃣ **Handling Authentication (JWT, OAuth, Sessions)**
+
+- Implement secure authentication using **JWT** or **OAuth**.
+- Example (JWT):
+  ```javascript
+  const token = jwt.sign({ id: 1 }, "secret", { expiresIn: "1h" });
+  ```
+
+7️⃣ **Connecting to Databases**
+
+- Works with **MongoDB (Mongoose), MySQL (Sequelize), PostgreSQL**.
+- Example (MongoDB):
+  ```javascript
+  mongoose.connect("mongodb://localhost:27017/mydb");
+  ```
+
+🚀 **Express.js is ideal for building APIs, web apps, and real-time services!**
+
+---
+
+`Multer`
+Multer is a middleware for handling multipart/form-data, which is primarily used for file uploads in Express.js applications.
+
+Why Use Multer?
+✅ Handles file uploads efficiently.
+✅ Supports single and multiple file uploads.
+✅ Stores files in disk (local) or memory (buffer).
+✅ Provides file validation (e.g., size, type restrictions).
+
+🔹 When to Use Multer?
+✅ Uploading profile pictures, documents, videos.
+✅ Handling multipart/form-data (file uploads from forms).
+✅ Processing files before saving (resizing images, converting formats).
+
+---
+
+`UUID`
+UUID (Universally Unique Identifier) is used to generate unique identifiers that are random, non-sequential, and nearly impossible to duplicate.
+
+🔹 Why Use UUID?
+✅ Ensures uniqueness across distributed systems.
+✅ Replaces auto-increment IDs to prevent collisions.
+✅ Ideal for database primary keys, file naming, session tokens, etc.
+
+---
